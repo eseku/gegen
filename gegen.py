@@ -117,7 +117,7 @@ class Lexer:
         tokens = []
 
         while self.current_char != None:
-            if self.current_char in '\t':
+            if self.current_char in ' \t':
                 self.advance()
             elif self.current_char in DIGITS:
                 tokens.append(self.make_number())
@@ -139,8 +139,6 @@ class Lexer:
                 self.advance()
             elif self.current_char == ')':
                 tokens.append(Token(TT_RPAREN))
-                self.advance()
-            elif self.current_char ==' ':
                 self.advance()
             else: 
                 pos_start = self.pos.copy()
