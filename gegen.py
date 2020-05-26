@@ -69,7 +69,7 @@ class Error:
 
     def as_string(self):
         result = f'{self.error_name}: {self.details}'
-        result += f'File: {self.pos_start.fn}, line: {self.pos_start.line + 1}'
+        result += f'\nFile: {self.pos_start.fn}, line: {self.pos_start.line + 1}'
         return result
 
 
