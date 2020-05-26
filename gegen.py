@@ -102,7 +102,7 @@ class Lexer:
                 if dot_count == 1: break
                 dot_count += 1
                 num_str += '.'
-                self.advance()
+                # self.advance()
 
             else: 
                 num_str += self.current_char
