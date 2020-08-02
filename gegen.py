@@ -106,7 +106,7 @@ class Lexer:
 
             else: 
                 num_str += self.current_char
-                self.advance()
+                self. ()
 
         if dot_count == 0:
             return Token(TT_INT, int(num_str))
@@ -149,6 +149,61 @@ class Lexer:
 
         return tokens, None
 
+
+##################
+# NODES
+##################
+
+class NumberNode: 
+    def __init(self, token):
+        self.token = token
+
+    def __repr__():
+        return f'{self.token}'
+
+
+class BinOpNode:
+    def __init__(self,left_node, op_token, right_node):
+        self.left_node = left_node
+        self.op_token = op_token
+        self.right_node = right_node
+
+    def __repr__():
+        return f'({self.left_node}, {self.op_token}, {self.right_node})'
+
+
+
+##################
+# PARSER
+##################
+
+class Parser:
+    def __init__(self, tokens):
+        self.tokens = tokens
+        self.token_index = -1
+        self.advance()
+
+    def advance():
+        self.token_index += 1
+        if token_index < len(self.tokens):
+            self.current_token = self.tokens[self.token_index]
+        return self.current_token
+
+    def factor():
+        token = self.current_token
+        if token.type in (TT_INT, TT_FLOAT):
+            self.advance()
+            return NumberNode(token)
+
+    def term():
+        left = self.factor()
+        while self.current_token in (TT_MUL, TT_DIV):
+            op_token = self.current_token
+            right = self.factor()
+            left = BinOpNode(left, op_token, right)
+
+    def expression():
+        pass
 
 def run(fn, text): 
     lexer = Lexer(text, fn)
